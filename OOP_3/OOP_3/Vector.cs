@@ -8,67 +8,76 @@ namespace OOP_3
 {
     class Vector
     {
-        int[] array;
-        int status = 0;
-        int length = 0;
-        public readonly string myName = " Храмых Владислав";
-        Random rnd = new Random();
+        public const String labName = "Лабороторная работа №3";
 
+        static int VectorCount = 0;
+        public static int Count { get; private set; } = 0;
+        int[] array;
+        int Length = 0;
+        public readonly string myName = " Храмых Владислав";
+        Random rnd = new Random();        
+        static Vector()
+        {
+            Count++;
+        }
         public Vector()
         {
             array = new int[10];
-            length = 10;
-            //for (int count = 0; count<length; count++)
-            //    array[count] = (rnd.Next(100)/13);    
+            Length = 10;
+            for (int count = 0; count<Length; count++)
+                array[count] = (rnd.Next(-100,100)/13);
+            VectorCount++;
         }
 
         public Vector(int size)
         {
             array = new int[size];
-            length = size;
-            for (int count = 0; count < length; count++)
+            Length = size;
+            for (int count = 0; count < Length; count++)
                 array[count] = (rnd.Next(-100,100)/3);
+            VectorCount++;
         }
 
         public Vector(int Item1, int Item2, int Item3, int Item4, int size)
         {
             array = new int[] { Item1, Item2,Item3,Item4};
-            length = size;
+            Length = size;
+            VectorCount++;
         }
 
         public int this[int i]
         {
             get
             {
-                if (i < 0 && i > length)
-                    status = 100;
-                return status;
+                if (i < 0 && i > Length)
+                    Console.WriteLine("Пpоверьте диапазон элементов массива");
+                return 101;
             }
             set
             {
-                if (i >= 0 && i <= length)
+                if (i >= 0 && i <= Length)
                 {
 
                     if (value <= 100 & value > -100)
                         array[i] = value;
                     else
-                        status = 200;
+                        Console.WriteLine("Пpоверьте диапазон заданных значений");
                 }
                 else
-                    status = 100;
+                    Console.WriteLine("Пpоверьте диапазон элементов массива");
             }
         }
 
         public void PrintArray()
         {
-            for (int count = 0; count < this.length; count++)
+            for (int count = 0; count < this.Length; count++)
                 Console.Write(array[count]+" ");
         }
 
         public int SumArray()
         {
             int sum = 0;
-            for (int i = 0; i < this.length; i++)
+            for (int i = 0; i < this.Length; i++)
                 sum += array[i];
             return sum;
         }
@@ -76,14 +85,14 @@ namespace OOP_3
         public int MulpiplyArray()
         {
             int Mul = 1;
-            for (int i = 0; i < this.length; i++)
+            for (int i = 0; i < this.Length; i++)
                 Mul += array[i];
             return Mul;
         }
 
-        public bool isNullInArray()
+        public bool IsNullInArray()
         { 
-            for(int i = 0; i<this.length; i++)
+            for(int i = 0; i<this.Length; i++)
             {
                 if (array[i] == 0)                
                     return true;                                            
@@ -94,6 +103,10 @@ namespace OOP_3
         {
             return array.Min();
         }
+        public static int GetCount()
+        {
+            return VectorCount;
+        }
     }
 
 
@@ -101,17 +114,44 @@ namespace OOP_3
     {
         CloseClass()
         {
-            this.index = 30;
+            index++;
         }
-        public int index = 10;
+        public static int index = 0;
     }
 
-    class StaticClass
+    partial class Student
     {
-        static public int countSC = 0;
-        static StaticClass()
+        public string Name { get; private set;}
+        public int Age { get; private set;}
+
+        public override bool Equals(object obj)
         {
-            countSC++;
+            if (obj == null)
+                return false;
+            if (obj.GetType() != this.GetType())
+                return false;
+            Student _Equal = (Student)obj;
+            return (this.Name == _Equal.Name && this.Age == _Equal.Age);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 13;
+            hash = string.IsNullOrEmpty(Name)? 0 : Name.GetHashCode();
+            hash = (hash * -47) + Age.GetHashCode();
+            return hash;
         }
     }
+
+    partial class Student
+    {
+        public Student(string name, int age )
+        {
+            this.Name = name;
+            this.Age = age;
+        }
+    }
+
+
+    
 }
