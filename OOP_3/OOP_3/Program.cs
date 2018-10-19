@@ -8,9 +8,9 @@ namespace OOP_3
 {
     class Program
     {
-        public static void Sum(int A, int B, out int _sum)
+        public static void Sum(int A, int B, out int sum)
         {
-            _sum = A + B;
+            sum = A + B;
         }
 
         public static void Change(int _c, ref int _d)
@@ -30,7 +30,7 @@ namespace OOP_3
             Console.WriteLine("\n--------------------------------");
 
             Vector v2 = new Vector(8);
-            v2.PrintArray();
+            v2.PrintArray();            
             Console.WriteLine("\n Сумма элементов: {0}", v2.SumArray());
             Console.WriteLine(" Произведение элементов: {0}", v2.MulpiplyArray());
             Console.WriteLine("\n--------------------------------");
@@ -66,7 +66,7 @@ namespace OOP_3
             Console.WriteLine("Сумма a и b равна: " + sum);
             Change(c, ref d);
             Console.WriteLine("После работы с ref: ");
-            Console.WriteLine("\nc = {0} \nd = {1})", c, d);
+            Console.WriteLine("\nc = {0} \nd = {1}", c, d);
             Console.WriteLine("\n--------------------------------\n");
 
             Student Alex = new Student("Alex", 23);

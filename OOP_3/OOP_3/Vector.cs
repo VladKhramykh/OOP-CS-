@@ -11,6 +11,7 @@ namespace OOP_3
         public const String labName = "Лабороторная работа №3";
 
         static int VectorCount = 0;
+        int status;
         public static int Count { get; private set; } = 0;
         int[] array;
         int Length = 0;
@@ -45,13 +46,17 @@ namespace OOP_3
             VectorCount++;
         }
 
-        public int this[int i]
+        public int this[int i]  
         {
             get
             {
                 if (i < 0 && i > Length)
+                {
                     Console.WriteLine("Пpоверьте диапазон элементов массива");
-                return 101;
+                    status = 101;
+                    return 101;
+                }                    
+                return this.array[i];
             }
             set
             {
@@ -61,10 +66,14 @@ namespace OOP_3
                     if (value <= 100 & value > -100)
                         array[i] = value;
                     else
-                        Console.WriteLine("Пpоверьте диапазон заданных значений");
+                    {
+                        Console.WriteLine("Пpоверьте введённое значение!");
+                        status = 201;                    
+                    }                        
                 }
                 else
                     Console.WriteLine("Пpоверьте диапазон элементов массива");
+                    status = 101;
             }
         }
 
