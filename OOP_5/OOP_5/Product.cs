@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace OOP_6
+namespace OOP_5
 {
     class Product
     {
