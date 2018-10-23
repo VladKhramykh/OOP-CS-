@@ -53,7 +53,7 @@ namespace OOP_6
         public Furniture( string type,string name) : base (name)
         {
             this.type = type;
-        }
+        }        
 
         public abstract void Print();       
         public abstract void ToString();
@@ -206,7 +206,7 @@ namespace OOP_6
         }
     }
 
-    class Slideng : Furniture, IFurniture
+    partial class Slideng : Furniture, IFurniture
     {
         private int sizes;
         private int shelves;
@@ -219,30 +219,7 @@ namespace OOP_6
             this.shelves = shelves;
             this.numberOfDoor = numberOfDoor;
             this.manufacturer = manufacturer;
-        }
-
-        public override void Print()
-        {
-            Console.WriteLine();
-            Console.WriteLine($"Тип мебели: {type}");
-            Console.WriteLine($"Название мебели: {name}");
-            Console.WriteLine($"Модель: {model}");
-            Console.WriteLine($"Ширина x высота: {sizes}");
-            Console.WriteLine($"Количество полок: {shelves}");
-            Console.WriteLine($"Количество дверей: {numberOfDoor}");
-            Console.WriteLine($"Проиводитель: {manufacturer}");
-            Console.WriteLine($"Цена: {Cost} р");
-            Console.WriteLine("----------------------------------------");
-        }
-
-        public override void ToString()
-        {
-            Console.WriteLine("О объекте: ");
-            Console.WriteLine($"Модель: {model}");
-            Console.WriteLine($"Цена: {Cost}");
-            Console.WriteLine($"Тип мебели: {name}\n");
-
-        }
+        }        
     }
 
     
@@ -320,4 +297,6 @@ namespace OOP_6
 
         }
     }
+
+    
 }
