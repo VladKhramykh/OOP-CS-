@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AEA8FFB-F6FA-4F9A-BA45-DE8F01BCF687}</ProjectGuid>
+    <ProjectGuid>{5DAB1CF4-284C-4C32-AE89-8B103C811279}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OOP_6</RootNamespace>
-    <AssemblyName>OOP_6</AssemblyName>
+    <RootNamespace>OOP_7</RootNamespace>
+    <AssemblyName>OOP_7</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="EnumAndStruct.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="PartialSlideng.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />

@@ -41,11 +41,11 @@ namespace OOP_7
                 return cost;
             }      
             set
-            {               
+            {
                 if (value > 0)
                     cost = Math.Round(value, 2);
                 else
-                    Console.WriteLine("Проверьте значение!");
+                    throw new SetExceptions("Некорректна задана цена!", value, this);
             }
         }
 
@@ -58,6 +58,13 @@ namespace OOP_7
         public string GetManufacturer()
         {
             return manufacturer;
+        }
+        public void PrintInfo()
+        {
+            Console.WriteLine($"Тип мебели: {type}");
+            Console.WriteLine($"Название мебели: {name}");
+            Console.WriteLine($"Модель: {model}");           
+            Console.WriteLine($"Проиводитель: {manufacturer}");            
         }
 
         public abstract void Print();       

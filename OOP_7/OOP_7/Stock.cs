@@ -20,7 +20,10 @@ namespace OOP_7
 
             set
             {
-                stock.Insert(i, value);
+                if (i > 0 && i < stock.Count)
+                    stock.Insert(i, value);
+                else
+                    throw new StockExceptions($"На складе товара c {i} индексом нет!", i);
             }
         }
 

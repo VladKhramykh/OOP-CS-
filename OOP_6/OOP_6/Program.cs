@@ -11,13 +11,13 @@ namespace OOP_6
     {
         public static void Main(string[] args)
         {
-            var bed1 = new Bed("Аврора 7", 2, "200x180", 254.99f, "ООО 'Территория сна'", "Комнатная", "Кровать");
-            var sofa1 = new Sofa("Счастье", 8, "238x95x120", 899.99f, "ООО 'Живые диваны'", "Комнатная", "Диван");
-            IFurniture sofa2 = new Sofa("Радость", 8, "138x135x170", 399.99f, "ООО 'Живые диваны'", "Комнатная", "Диван");
-            var sofa3 = new Sofa("Здоровье", 8, "268x95x140", 199.99f, "ООО 'ВитебскДиван'", "Комнатная", "Диван");
-            var sofa4 = new Sofa("Апполинария", 8, "178x95x120", 1899.99f, "ООО 'ПинскДрев'", "Комнатная", "Диван");
-            var sofa5 = new Sofa("Штормград", 8, "238x95x110", 799.99f, "ООО 'Ами Мебель'", "Комнатная", "Диван");
-            var wardrobe1 = new Wardrobe("Ревьера", "150x216x58", 1399.99f, 8, "Лагуна", "Комнатная", "Шкаф");
+            var bed1 = new Bed("Аврора 7", 2, "200x180", 254.99d, "ООО 'Территория сна'", "Комнатная", "Кровать");
+            var sofa1 = new Sofa("Счастье", 8, "238x95x120", 899.99d, "ООО 'Живые диваны'", "Комнатная", "Диван");
+            IFurniture sofa2 = new Sofa("Радость", 8, "138x135x170", 399.99d, "ООО 'Живые диваны'", "Комнатная", "Диван");
+            var sofa3 = new Sofa("Здоровье", 8, "268x95x140", 199.99d, "ООО 'ВитебскДиван'", "Комнатная", "Диван");
+            var sofa4 = new Sofa("Апполинария", 8, "178x95x120", 1899.99d, "ООО 'ПинскДрев'", "Комнатная", "Диван");
+            var sofa5 = new Sofa("Штормград", 8, "238x95x110", 799.99d, "ООО 'Ами Мебель'", "Комнатная", "Диван");
+            var wardrobe1 = new Wardrobe("Ревьера", "150x216x58", 1399.99d, 8, "Лагуна", "Комнатная", "Шкаф");
             for (; ; )
             {
                 int choice;
@@ -78,11 +78,16 @@ namespace OOP_6
                             stock.Add(333);
                             stock.Add(sofa1);
                             stock.Add("строка");
-                            stock.Remove(2);
+                            stock.Remove(3);
 
                             stock[0] = 228;
 
-                            stock.Print();
+                            //stock.Print();
+
+                            Controller controller = new Controller(stock);
+                            controller.SearchName("ООО 'Живые диваны'");
+                            Console.WriteLine(stock.getCount());
+                            Console.WriteLine($"Сумма всех диванов на складе: {controller.SumOfSofas()}");
 
 
                             continue;
