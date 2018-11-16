@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace OOP_7
+namespace OOP_6
 {
     struct Student
     {

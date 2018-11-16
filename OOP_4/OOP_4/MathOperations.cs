@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_4
+namespace OOP_8
 {
     static class MathOperations
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OOP_7
+namespace OOP_6
 {
     partial class Slideng: Furniture, IFurniture
     {

@@ -4,9 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_4
+namespace OOP_8
 {
-    class Password <T>
+
+    interface IFunction<T>
+    {
+        T Id { get; set; }        
+        T read();
+        void NewValue(T value);
+    }
+
+    class Password<T>: IFunction<T>
     {
         class Ownew
         {
@@ -22,8 +30,8 @@ namespace OOP_4
             }
         }
 
-        
-        T password;        
+        public T Id { get; set; }
+        string password = "";        
         public int GetLength()
         {
             return this.password.Length;
@@ -34,10 +42,18 @@ namespace OOP_4
         }
         public Password(string password)
         {
-            if (password.Length >= 6 && password.Length <= 12)
-                this.password = password;
-            else
-                Console.WriteLine("Пароль должен содержать 6-12 символов!");
+            try
+            {
+                if (password.Length >= 6 && password.Length <= 12)
+                    this.password = password;
+                else
+                    throw new Exception("Пароль должен содержать 6 - 12 символов!");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         public string Pass
@@ -53,9 +69,19 @@ namespace OOP_4
                 else                
                     Console.WriteLine("Пароль должен содержать 6-12 символов! ");                                    
             }
+        }        
+        
+        public T read()
+        {
+            return Id;
         }
 
-        public static string operator -(Password pass, char symbol)
+        public void NewValue(T value)
+        {
+            Id = value;
+        }
+
+        public static string operator -(Password<T> pass, char symbol)
         {
 
             int length = pass.password.Length;
@@ -67,7 +93,7 @@ namespace OOP_4
 
         }
 
-        public static bool operator >(Password pass1,Password pass2)
+        public static bool operator >(Password<T> pass1,Password<T> pass2)
         {
 
             if (pass1.password.Length > pass2.password.Length)
@@ -76,7 +102,7 @@ namespace OOP_4
                 return false;
         }
 
-        public static bool operator <(Password pass1, Password pass2)
+        public static bool operator <(Password<T> pass1, Password<T> pass2)
         {
 
             if (pass1.password.Length < pass2.password.Length)
@@ -85,7 +111,7 @@ namespace OOP_4
                 return false;
         }
 
-        public static bool operator != (Password pass1, Password pass2)
+        public static bool operator != (Password<T> pass1, Password<T> pass2)
         {
             if (pass1.password == pass2.password)
                 return false;
@@ -93,7 +119,7 @@ namespace OOP_4
                 return true;
         }
 
-        public static bool operator ==(Password pass1, Password pass2)
+        public static bool operator ==(Password<T> pass1, Password<T> pass2)
         {
             if (pass1.password == pass2.password)
                 return true;
@@ -101,13 +127,13 @@ namespace OOP_4
                 return false;
         }
 
-        public static Password operator ++(Password pass)
+        public static Password<T> operator ++(Password<T> pass)
         {
             pass.password = "12345678";
             return pass;
         }   
         
-        public static bool operator true(Password pass)
+        public static bool operator true(Password<T> pass)
         {
             string password = pass.password;
             int Length = pass.password.Length;
@@ -141,7 +167,7 @@ namespace OOP_4
         }
 
 
-        public static bool operator false(Password pass)
+        public static bool operator false(Password<T> pass)
         {
             string password = pass.password;
             int Length = pass.password.Length;
@@ -171,7 +197,9 @@ namespace OOP_4
                 return false;
             //Console.WriteLine("Ваш пароль средний!");
         }
+        
     }
+    
 }
 
 

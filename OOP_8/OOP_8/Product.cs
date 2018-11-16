@@ -1,20 +1,21 @@
 ﻿using System;
+using System.IO;
 
 
-namespace OOP_6
+namespace OOP_8
 {
     class Product
     {
-        protected string name;       
+        protected string name;
         public Product(string name)
         {
             this.name = name;
         }
     }
 
-   
 
-    interface IFurniture 
+
+    interface IFurniture
     {
         void Print();
     }
@@ -24,14 +25,14 @@ namespace OOP_6
         void Print();
     }
 
-  
 
-    
+
+
     abstract class Furniture : Product
     {
         protected string type;
         protected string model { get; set; }
-        public string manufacturer;
+        protected string manufacturer;
         protected double cost;
 
         public double Cost
@@ -39,9 +40,9 @@ namespace OOP_6
             get
             {
                 return cost;
-            }      
+            }
             set
-            {               
+            {
                 if (value > 0)
                     cost = Math.Round(value, 2);
                 else
@@ -50,17 +51,12 @@ namespace OOP_6
         }
 
 
-        public Furniture( string type,string name) : base (name)
+        public Furniture(string type, string name) : base(name)
         {
             this.type = type;
-        }       
-        
-        public string GetManufacturer()
-        {
-            return manufacturer;
         }
 
-        public abstract void Print();       
+        public abstract void Print();
         public abstract void ToString();
     }
 
@@ -76,7 +72,7 @@ namespace OOP_6
             Sofa sofa = (Sofa)obj;
             if (this.Cost > sofa.Cost)
                 return 1;
-            if(this.Cost < sofa.Cost)
+            if (this.Cost < sofa.Cost)
                 return -1;
             return 0;
         }
@@ -88,12 +84,12 @@ namespace OOP_6
             this.Cost = cost;
             this.sizes = sizes;
             this.manufacturer = manufacturer;
-            Array.Resize(ref sofas, sofas.Length+1);
-            sofas[Count] = this;            
+            Array.Resize(ref sofas, sofas.Length + 1);
+            sofas[Count] = this;
             Count++;
         }
 
-        
+
         public static void PrintSortSofas()
         {
             Array.Sort(sofas);
@@ -127,15 +123,24 @@ namespace OOP_6
             Console.WriteLine($"Проиводитель: {manufacturer}");
             Console.WriteLine($"Цена: {Cost} р");
             Console.WriteLine("----------------------------------------");
-        }   
-        
+        }
+
         public override void ToString()
         {
             Console.WriteLine("О объекте: ");
             Console.WriteLine($"Модель: {model}");
             Console.WriteLine($"Цена: {Cost}");
-            Console.WriteLine($"Производитель: {manufacturer}\n");
-            Console.WriteLine($"Тип мебели: {name}\n");           
+            Console.WriteLine($"Тип мебели: {name}\n");
+
+        }
+
+        public void ToStringSW(StreamWriter sw)
+        {
+           
+            sw.WriteLine($"Модель: {model}");
+            sw.WriteLine($"Цена: {Cost}");
+            sw.WriteLine($"Тип мебели: {name}");
+            sw.WriteLine();
 
         }
     }
@@ -145,7 +150,7 @@ namespace OOP_6
         private int places;
         private string sizes;
 
-        public Bed(string model, int places, string sizes, double cost, string manufacturer, string type, string name) : base (type, name)
+        public Bed(string model, int places, string sizes, double cost, string manufacturer, string type, string name) : base(type, name)
         {
             this.model = model;
             this.places = places;
@@ -212,7 +217,7 @@ namespace OOP_6
         }
     }
 
-    partial class Slideng : Furniture, IFurniture
+    class Slideng : Furniture, IFurniture
     {
         private int sizes;
         private int shelves;
@@ -225,10 +230,33 @@ namespace OOP_6
             this.shelves = shelves;
             this.numberOfDoor = numberOfDoor;
             this.manufacturer = manufacturer;
-        }        
+        }
+
+        public override void Print()
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Тип мебели: {type}");
+            Console.WriteLine($"Название мебели: {name}");
+            Console.WriteLine($"Модель: {model}");
+            Console.WriteLine($"Ширина x высота: {sizes}");
+            Console.WriteLine($"Количество полок: {shelves}");
+            Console.WriteLine($"Количество дверей: {numberOfDoor}");
+            Console.WriteLine($"Проиводитель: {manufacturer}");
+            Console.WriteLine($"Цена: {Cost} р");
+            Console.WriteLine("----------------------------------------");
+        }
+
+        public override void ToString()
+        {
+            Console.WriteLine("О объекте: ");
+            Console.WriteLine($"Модель: {model}");
+            Console.WriteLine($"Цена: {Cost}");
+            Console.WriteLine($"Тип мебели: {name}\n");
+
+        }
     }
 
-    
+
 
     class Nightstand : Furniture, IFurniture
     {
@@ -251,7 +279,7 @@ namespace OOP_6
             Console.WriteLine($"Название мебели: {name}");
             Console.WriteLine($"Модель: {model}");
             Console.WriteLine($"Ширина x высота: {sizes}");
-            Console.WriteLine($"Количество ящиков: {numberOfBoxes}");            
+            Console.WriteLine($"Количество ящиков: {numberOfBoxes}");
             Console.WriteLine($"Проиводитель: {manufacturer}");
             Console.WriteLine($"Цена: {Cost} р");
             Console.WriteLine("----------------------------------------");
@@ -267,7 +295,7 @@ namespace OOP_6
         }
     }
 
-     sealed class Chair : Furniture, IFurniture
+    sealed class Chair : Furniture, IFurniture
     {
         private string typeChair;
         private int heigth;
@@ -303,6 +331,4 @@ namespace OOP_6
 
         }
     }
-
-    
 }

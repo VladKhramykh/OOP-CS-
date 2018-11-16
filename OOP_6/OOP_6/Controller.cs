@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_7
+namespace OOP_6
 {
     class Controller
     {
@@ -14,6 +14,7 @@ namespace OOP_7
         {
             stock = (Stock)obj;
         }
+
         public double SumOfSofas()
         {
             double sum = 0;

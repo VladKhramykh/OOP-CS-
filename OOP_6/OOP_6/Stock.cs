@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_7
+namespace OOP_6
 {
     class Stock
     {
@@ -13,15 +13,9 @@ namespace OOP_7
         
         public object this[int i]
         {
-            get
-            {
-                return stock[i];
-            }
+            get => stock[i];
 
-            set
-            {
-                stock.Insert(i, value);
-            }
+            set => stock.Insert(i, value);            
         }
 
 
