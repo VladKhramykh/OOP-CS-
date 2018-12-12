@@ -1,0 +1,17 @@
+Тип: OOP_12.Player
+Методы:
+	String get_Name()
+	String get_Team()
+	String get_Game()
+	String GetName()
+	String GetTeam()
+	String GetGame()
+	Void ShowInfo()
+	virtual String ToString()
+	virtual Boolean Equals(Object obj)
+	virtual Int32 GetHashCode()
+	Type GetType()
+Поля:
+	Name
+	Team
+	Game

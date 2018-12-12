@@ -51,16 +51,12 @@ namespace OOP_10
                                 foreach (object o in arrayList)
                                     Console.WriteLine(o.ToString());
 
-                                Console.WriteLine("Удалил 4 элемент");
+                                Console.WriteLine("Удалил 2 элемент");
                                 arrayList.RemoveAt(2);
 
                                 foreach (object o in arrayList)
                                     Console.WriteLine(o.ToString());
                                 Console.WriteLine($"Количество элементов в коллекции LinkedList:{arrayList.Count}\n");
-
-                                foreach (object o in arrayList)
-                                    Console.WriteLine(o.ToString());
-
 
                                 continue;
                             }
