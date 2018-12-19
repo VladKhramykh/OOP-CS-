@@ -15,7 +15,7 @@ namespace KR_2
             {
                 List<string> Player = new List<string>();
 
-                Player.Add("s1mpe");
+                Player.Add("s1mple");
                 Player.Add("Miracle~");
                 Player.Add("no[o]ne");
                 Player.Add("Gh");
@@ -29,7 +29,7 @@ namespace KR_2
 
                 SuperString<List<string>> first = new SuperString<List<string>>(Team, Player);
 
-                Console.WriteLine("Введите искомый элемент");
+                Console.WriteLine("Что ищём?");
                 string findElement = Console.ReadLine();
                 Console.WriteLine(first.Finding(first, findElement));
 
@@ -70,10 +70,10 @@ namespace KR_2
             List<string> olee = new List<string>();
             List<string> aaaa = new List<string>();
 
-            public SuperString(List<string> ammo, List<string> army)
+            public SuperString(List<string> a, List<string> b)
             {
-                this.olee = ammo;
-                this.aaaa = army;
+                olee = a;
+                aaaa = b;
             }
 
             public string Finding(SuperString<List<string>> o, string value)
@@ -86,7 +86,8 @@ namespace KR_2
                 {
                     return value;
                 }
-                else throw new Exception("нима такого");
+                else
+                    throw new Exception("нима такого");
             }
 
         }
